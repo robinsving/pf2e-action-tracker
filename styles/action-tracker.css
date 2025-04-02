@@ -220,3 +220,29 @@
     text-align: center;
     min-width: 80px; /* Adjust width to fit "Round: X" */
 }
+
+/* Status effects styling */
+#status-effects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #337ab7; /* Blue for emphasis */
+    padding: 2px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.status-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid white;
+}

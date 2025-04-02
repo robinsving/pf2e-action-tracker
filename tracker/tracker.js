@@ -25,8 +25,7 @@ function _renderActionTracker(context = "default") {
 
     const tracker = API.actionTrackerApp();
     if (activeCombat) {
-        tracker.initializeFromCombat();
-        tracker.render(true);
+        tracker.renderCombat();
         debug(`${title} rendered for ${context}.`);
     } else if (tracker.rendered) {
         tracker.close();
@@ -72,6 +71,15 @@ Hooks.once("init", () => {
         default: false,
     });
 
+    game.settings.register(SCRIPT_ID, settings.showStatusIcons.id, {
+        name: settings.showStatusIcons.name,
+        hint: settings.showStatusIcons.hint,
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: true,
+    });
+
     debug("Settings registered during init hook");
     isInitialized = true;
 });
@@ -88,7 +96,6 @@ Hooks.once("ready", () => {
 // Automatically open the Action Tracker when an encounter starts
 Hooks.on("createCombat", (combat) => {
     debug(`Combat created: ${combat.name}.`);
-    API.actionTrackerApp().clearActions();
     _renderActionTracker("new combat");
 });
 
@@ -96,4 +103,14 @@ Hooks.on("createCombat", (combat) => {
 Hooks.on("canvasReady", (scene) => {
     debug(`Scene switched to: ${scene.name}.`);
     _renderActionTracker("scene change");
+});
+
+// Handle combat end
+Hooks.on("deleteCombat", (combat) => {
+    debug(`Combat ended: ${combat.name}.`);
+    const tracker = API.actionTrackerApp();
+    if (tracker.rendered) {
+        tracker.close();
+        debug(`${title} un-rendered due to combat end.`);
+    }
 });

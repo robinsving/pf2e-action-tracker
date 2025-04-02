@@ -5,6 +5,7 @@ export const settings = {
     debug: { id: "debugMode", name: "Enable Debugging", hint: "Print debug to console log" },
     autoRenderOnSceneChange: { id: "autoRenderOnSceneChange", name: "Auto Render on Scene Change", hint: "Automatically render the Action Tracker when the scene changes." },
     autoRenderOnCombatStart: { id: "autoRenderOnCombatStart", name: "Auto Render on Combat Start", hint: "Automatically render the Action Tracker when a new combat starts." },
+    showStatusIcons: { id: "showStatusIcons", name: "Show Status Icons", hint: "Enable or disable the display of status icons in the tracker." },
 }
 
 export function popup(message) {
@@ -28,6 +29,7 @@ export const ChatType = {
     ACTION: "ACTION",
     ACTION_CARD: "ACTION_CARD",
     ITEM_CARD: "ITEM_CARD",
+    STATUS_UPDATE: "STATUS_UPDATE", // New chat type for status updates
     UNKNOWN: "UNKNOWN",
 };
 
@@ -45,6 +47,9 @@ export function determineChatType(message) {
     }
     if (message.includes("class=\"action\"")) {
         return ChatType.ACTION;
+    }
+    if (message.includes("participant-conditions")) {
+        return ChatType.STATUS_UPDATE; // Detect status updates
     }
     return ChatType.UNKNOWN;
 }

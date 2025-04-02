@@ -15,7 +15,6 @@
 - Write detailed documentation for developers to extend or modify the tracker, as well as user-facing documentation to guide configuration and usage.
 - Add a feature to filter or group actions by traits or types, making it easier for users to manage and view specific actions.
 - Replace static "1" glyphs with dynamic icons or images that better represent the action type, improving the visual representation of actions.
-- Visual representation of changed action count for character (slowed, hasted)
 
 ## Optimizations
 - Optimize the rendering process to avoid unnecessary re-renders and improve performance by caching parsed actions.

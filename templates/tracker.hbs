@@ -10,6 +10,13 @@
         </button>
     </div>
     <p id="character-name">Character: <span>{{characterName}}</span></p>
+    <div id="status-effects">
+        {{#each statuses}}
+        <div class="status-badge">
+            <img src="{{this.icon}}" class="status-icon" title="{{this.name}}" />
+        </div>
+        {{/each}}
+    </div>
     <p>Total Actions Used: <span id="total-actions">{{totalActions}}</span></p>
     <ul id="action-list">
         {{#each actions}}

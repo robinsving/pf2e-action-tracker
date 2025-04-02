@@ -1,11 +1,12 @@
 import { id as SCRIPT_ID, title } from "../module.json";
-import { info, determineChatType, ChatType } from "./ActionTrackerUtilities.js";
+import { info, settings, determineChatType, ChatType } from "./ActionTrackerUtilities.js";
 
 export class ActionTracker extends Application {
     constructor(options) {
         super(options);
         this.trackedActions = {};
         this.currentActor = null; // Track the current actor
+        this.statuses = []; // Track statuses
         this.initHooks();
     }
 
@@ -16,18 +17,18 @@ export class ActionTracker extends Application {
             template: `modules/${SCRIPT_ID}/templates/tracker.hbs`,
             width: 300,
             height: "auto",
-            resizable: true,
+            resizable: false,
             classes: [title],
-            popOut: true, // Allow the application to pop out
         });
     }
 
     initHooks() {
+        Hooks.on("renderEncounterTrackerPF2e", this.handleTurnChange.bind(this));
         Hooks.on("updateCombat", this.handleTurnChange.bind(this));
-        Hooks.on("createChatMessage", this.handleChatMessage.bind(this));
+        Hooks.on("renderChatMessage", this.handleChatMessage.bind(this));
     }
 
-    initializeFromCombat() {
+    renderCombat() {
         // Get the active combat in the current scene
         const activeScene = game.scenes?.active; // Get the currently active scene
         const activeCombat = game.combats?.find(c => c.active && c.scene.id === activeScene?.id);
@@ -45,6 +46,9 @@ export class ActionTracker extends Application {
                 this.currentActor = null; // Reset current actor if not found
             }
         }
+
+        // Render without bringing to front
+        this.render(true);
     }
     
     /** @override */
@@ -58,6 +62,7 @@ export class ActionTracker extends Application {
     }
 
     handleTurnChange(combat, changed) {
+        this.statuses = []; // Reset statuses on turn change
         if (changed?.turn !== undefined) {
             const currentCombatant = combat.combatants.get(combat.current.combatantId);
             if (currentCombatant?.actor) {
@@ -67,7 +72,7 @@ export class ActionTracker extends Application {
                 if (isOwnedByUser || isGM) {
                     this.currentActor = currentCombatant.actor;
                     this.resetActions(currentCombatant.actor.id);
-                    this.render(true); // Re-render the UI when the turn changes
+                    this.renderCombat();
                 }
             }
         }
@@ -89,6 +94,9 @@ export class ActionTracker extends Application {
                 break;
             case ChatType.ITEM_CARD:
                 actions = this.parseChatCardMessage(message.content);
+                break;
+            case ChatType.STATUS_UPDATE:
+                this.updateStatusesFromMessage(message.content);
                 break;
             default:
                 info(`Unknown chat type for message: ${message.content}`);
@@ -149,6 +157,7 @@ export class ActionTracker extends Application {
                     .join(""); // Combine the text content
 
                 const actionGlyphs = Array.from(card.querySelectorAll(".action-glyph"))
+                    .filter(glyph => !glyph.closest("button[data-variant]")) // Exclude glyphs inside data-variant buttons
                     .map(glyph => glyph.textContent.trim()); // Extract text content
 
                 if (actionName && actionGlyphs.length > 0) {
@@ -165,12 +174,12 @@ export class ActionTracker extends Application {
             this.trackedActions[actorId] = [];
         }
         this.trackedActions[actorId].push(...actions);
-        this.render(true);
+        this.render(false);
     }
 
     resetActions(actor) {
         this.trackedActions[actor] = [];
-        this.render(true);
+        this.render(false);
     }
 
     _onRemoveAction(event) {
@@ -206,6 +215,24 @@ export class ActionTracker extends Application {
         }
     }
 
+    updateStatusesFromMessage(content) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, "text/html");
+
+        const newStatuses = [];
+        const conditions = doc.querySelectorAll(".participant-conditions ul li");
+        conditions.forEach(condition => {
+            const icon = condition.querySelector("img")?.src || "";
+            const name = condition.querySelector(".name")?.textContent.trim() || "";
+            if (icon && name) {
+                newStatuses.push({ icon, name });
+            }
+        });
+
+        this.statuses = newStatuses;
+        this.render(true); // Re-render the tracker to update statuses
+    }
+
     getData() {
         // Prepare data for the Handlebars template
         const actorId = this.currentActor?.id;
@@ -218,11 +245,14 @@ export class ActionTracker extends Application {
         const activeCombat = game.combats?.find(c => c.active);
         const currentRound = activeCombat?.round || 0; // Calculate the current round
 
+        const showStatusIcons = game.settings.get(SCRIPT_ID, settings.showStatusIcons.id); // Get the setting value
+
         return {
             characterName: this.currentActor?.name || "Unknown",
             totalActions,
             actions,
             currentRound, // Include the current round
+            statuses: showStatusIcons ? this.statuses : [], // Include statuses only if the setting is enabled
             showTurnButtons: game.user.isGM, // Show turn buttons only for GMs
         };
     }
