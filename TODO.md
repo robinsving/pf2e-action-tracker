@@ -9,6 +9,7 @@
 ## Improvements
 - Handle Draw/Sheath Interact actions
 - Add support for languages by integrating Foundry's localization system, allowing users to experience the tracker in their preferred language.
+- Use the pf2e flags for determining type and action cost
 
 ## Optimizations
 - Optimize the rendering process to avoid unnecessary re-renders and improve performance by caching parsed actions.

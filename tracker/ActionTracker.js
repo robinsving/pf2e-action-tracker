@@ -242,10 +242,17 @@ export class ActionTracker extends Application {
         // Prepare data for the Handlebars template
         const actorId = this.currentActor?.id;
         const actions = this.trackedActions[actorId] || [];
-        const totalActions = actions
-            .map(action => parseInt(action.cost, 10))
-            .filter(cost => !isNaN(cost)) // Exclude non-numeric values
-            .reduce((sum, cost) => sum + cost, 0);
+        let totalActions = 0;
+        let hasUncertainCosts = false;
+
+        actions.forEach(action => {
+            const cost = parseInt(action.cost, 10);
+            if (action.cost.length === 1 && !isNaN(cost)) {
+                totalActions += cost;
+            } else if (action.cost.length !== 1) {
+                hasUncertainCosts = true;
+            }
+        });
 
         const activeCombat = game.combats?.find(c => c.active);
         const currentRound = activeCombat?.round || 0; // Calculate the current round
@@ -259,6 +266,7 @@ export class ActionTracker extends Application {
             currentRound, // Include the current round
             statuses: showStatusIcons ? this.statuses : [], // Include statuses only if the setting is enabled
             showTurnButtons: game.user.isGM, // Show turn buttons only for GMs
+            hasUncertainCosts, // Include flag for uncertain costs
         };
     }
 }

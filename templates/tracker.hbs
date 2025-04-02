@@ -17,15 +17,13 @@
         </div>
         {{/each}}
     </div>
-    <p>Total Actions Used: <span id="total-actions">{{totalActions}}</span></p>
+    <p>Total Actions Used: <span id="total-actions">{{totalActions}}{{#if hasUncertainCosts}} + ?{{/if}}</span></p>
     <ul id="action-list">
         {{#each actions}}
             <li class="action-item">
                 <div class="action-row">
                     <span class="action-glyphs">
-                        {{#each (range 1 (add this.cost 1))}}
-                            <span class="action-glyph">1</span>
-                        {{/each}}
+                        <span class="action-glyph">{{this.cost}}</span>
                     </span>
                     <span class="action-name">{{this.name}}</span>
                 </div>
