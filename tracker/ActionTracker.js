@@ -118,9 +118,14 @@ export class ActionTracker extends Application {
         const actionGlyph = doc.querySelector("h4.action .action-glyph");
 
         if (actionElement) {
-            const actionName = actionElement.textContent.trim();
-            const cost = actionGlyph ? parseInt(actionGlyph.textContent.trim(), 10) : 1; // Default cost is 1 if no glyph is present
-            actions.push({ name: actionName, cost });
+            const actionName = actionElement.textContent.trim().toLowerCase();
+
+            // Exclude actions containing specific keywords
+            const excludedKeywords = ["saving throw", "initiative"];
+            if (!excludedKeywords.some(keyword => actionName.includes(keyword))) {
+                const cost = actionGlyph ? parseInt(actionGlyph.textContent.trim(), 10) : 1; // Default cost is 1 if no glyph is present
+                actions.push({ name: actionElement.textContent.trim(), cost });
+            }
         }
 
         return actions;
