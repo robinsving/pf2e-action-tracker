@@ -1,0 +1,34 @@
+{
+    "id": "pf2e-action-tracker",
+    "title": "PF2e Action Tracker",
+    "description": "A module for tracking in-combat Action count.",
+    "version": "0.1.1",
+    "authors": [{"name": "Robin Sving", "email":"robin.sving@gmail.com", "discord":"@.wigglemaster"}],
+    "compatibility": {
+        "minimum": "10",
+        "verified": "11"
+    },
+    "scripts": [
+        "module/entry-control.js"
+    ],
+    "styles": [
+        "styles/action-tracker.css"
+    ],
+    "templates": [
+        "templates/tracker.hbs"
+    ],
+    "relationships": {
+        "systems": [
+            {
+                "id": "pf2e",
+                "type": "system"
+            }
+        ]
+    },
+    "url": "https://github.com/robinsving/pf2e-action-tracker",
+    "manifest": "https://github.com/robinsving/pf2e-action-tracker/releases/latest/download/module.json",
+    "download": "https://github.com/robinsving/pf2e-action-tracker/releases/latest/download/pir-release.zip",
+    "bugs": "https://github.com/robinsving/pf2e-action-tracker/issues",
+    "readme": "https://raw.githubusercontent.com/robinsving/pf2e-action-tracker/main/README.md",
+    "changelog": "https://raw.githubusercontent.com/robinsving/pf2e-action-tracker/main/CHANGELOG.md"
+}

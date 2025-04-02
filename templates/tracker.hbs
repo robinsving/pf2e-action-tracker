@@ -1,0 +1,31 @@
+<div class="tracker-container">
+    <h2>Action Tracker</h2>
+    <div class="round-tracker">
+        <button class="prev-turn-btn" title="Previous Turn">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <span id="current-round">Round: {{currentRound}}</span>
+        <button class="next-turn-btn" title="Next Turn">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    <p id="character-name">Character: <span>{{characterName}}</span></p>
+    <p>Total Actions Used: <span id="total-actions">{{totalActions}}</span></p>
+    <ul id="action-list">
+        {{#each actions}}
+            <li class="action-item">
+                <div class="action-row">
+                    <span class="action-glyphs">
+                        {{#each (range 1 (add this.cost 1))}}
+                            <span class="action-glyph">1</span>
+                        {{/each}}
+                    </span>
+                    <span class="action-name">{{this.name}}</span>
+                </div>
+                <button class="remove-action-btn" data-index="{{@index}}" title="Remove Action">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </li>
+        {{/each}}
+    </ul>
+</div>
