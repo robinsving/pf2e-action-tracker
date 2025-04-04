@@ -7,6 +7,7 @@ export class ActionTracker extends Application {
         this.trackedActions = {};
         this.currentActor = null; // Track the current actor
         this.statuses = []; // Track statuses
+        this.currentRound = 0; // Track the current round
         this.initHooks();
     }
 
@@ -19,12 +20,13 @@ export class ActionTracker extends Application {
             height: "auto",
             resizable: false,
             classes: [title],
+            popOut: true,
         });
     }
 
+    /** Define wWhat should trigger a re-render of the tracker */
     initHooks() {
-        Hooks.on("renderEncounterTrackerPF2e", this.handleTurnChange.bind(this));
-        Hooks.on("updateCombat", this.handleTurnChange.bind(this));
+        Hooks.on("updateCombat", this.handleCombatChange.bind(this));
         Hooks.on("renderChatMessage", this.handleChatMessage.bind(this));
     }
 
@@ -35,6 +37,7 @@ export class ActionTracker extends Application {
 
         if (activeCombat) {
             const currentCombatant = activeCombat.combatants.get(activeCombat.current.combatantId);
+            this.currentRound = activeCombat?.round || 0; // Calculate the current round
             if (currentCombatant?.actor) {
                 this.currentActor = currentCombatant.actor;
 
@@ -61,19 +64,22 @@ export class ActionTracker extends Application {
         html.find(".next-turn-btn").on("click", this._onNextTurn.bind(this)); // Listener for "Next Turn" button
     }
 
-    handleTurnChange(combat, changed) {
+    handleCombatChange(combat, changed) {
         this.statuses = []; // Reset statuses on turn change
-        if (changed?.turn !== undefined) {
-            const currentCombatant = combat.combatants.get(combat.current.combatantId);
-            if (currentCombatant?.actor) {
-                const isOwnedByUser = currentCombatant.actor.isOwner;
-                const isGM = game.user.isGM;
+        this.currentRound = combat?.current?.round || this.currentRound; // Update the current round
 
-                if (isOwnedByUser || isGM) {
-                    this.currentActor = currentCombatant.actor;
-                    this.resetActions(currentCombatant.actor.id);
-                    this.renderCombat();
+        const currentCombatant = combat.combatants.get(combat.current.combatantId)?.actor;
+        const isGM = game.user.isGM;
+
+        if (currentCombatant || isGM) {
+            const isOwnedByUser = currentCombatant?.isOwner || false; // Ensure currentCombatant is defined
+
+            if (isOwnedByUser || isGM) {
+                this.currentActor = currentCombatant || null; // Set to null if no combatant
+                if (currentCombatant) {
+                    this.resetActions(currentCombatant.id);
                 }
+                this.renderCombat();
             }
         }
     }
@@ -82,7 +88,7 @@ export class ActionTracker extends Application {
         const actorId = message.speaker?.actor;
         if (!actorId) return;
 
-        const chatType = determineChatType(message.flavor || message.content || "");
+        const chatType = determineChatType(message);
         let actions = [];
 
         switch (chatType) {
@@ -115,6 +121,7 @@ export class ActionTracker extends Application {
 
         const actions = [];
         const actionElement = doc.querySelector("h4.action strong");
+        const actionSubtitle = doc.querySelector("h4.action .subtitle span");
         const actionGlyph = doc.querySelector("h4.action .action-glyph");
 
         if (actionElement) {
@@ -124,7 +131,11 @@ export class ActionTracker extends Application {
             const excludedKeywords = ["saving throw", "initiative"];
             if (!excludedKeywords.some(keyword => actionName.includes(keyword))) {
                 const cost = actionGlyph ? parseInt(actionGlyph.textContent.trim(), 10) : 1; // Default cost is 1 if no glyph is present
-                actions.push({ name: actionElement.textContent.trim(), cost });
+                
+                const subtitle = actionSubtitle ? actionSubtitle.textContent.trim() : null;
+                var name = actionElement.textContent.trim() + (subtitle ? ` (${subtitle})` : "");
+
+                actions.push({ name, cost });
             }
         }
 
@@ -242,20 +253,18 @@ export class ActionTracker extends Application {
         // Prepare data for the Handlebars template
         const actorId = this.currentActor?.id;
         const actions = this.trackedActions[actorId] || [];
+
         let totalActions = 0;
         let hasUncertainCosts = false;
 
         actions.forEach(action => {
             const cost = parseInt(action.cost, 10);
-            if (action.cost.length === 1 && !isNaN(cost)) {
+            if (("" + action.cost).length === 1 && !isNaN(cost)) {
                 totalActions += cost;
-            } else if (action.cost.length !== 1) {
+            } else if (("" + action.cost).length !== 1) {
                 hasUncertainCosts = true;
             }
         });
-
-        const activeCombat = game.combats?.find(c => c.active);
-        const currentRound = activeCombat?.round || 0; // Calculate the current round
 
         const showStatusIcons = game.settings.get(SCRIPT_ID, settings.showStatusIcons.id); // Get the setting value
 
@@ -263,7 +272,7 @@ export class ActionTracker extends Application {
             characterName: this.currentActor?.name || "Unknown",
             totalActions,
             actions,
-            currentRound, // Include the current round
+            currentRound: this.currentRound, // Include the current round
             statuses: showStatusIcons ? this.statuses : [], // Include statuses only if the setting is enabled
             showTurnButtons: game.user.isGM, // Show turn buttons only for GMs
             hasUncertainCosts, // Include flag for uncertain costs

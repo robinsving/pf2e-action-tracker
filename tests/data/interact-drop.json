@@ -1,0 +1,37 @@
+{
+    "content": "<p class=\"action-content\"><img src=\"icons/weapons/bows/longbow-recurve-brown.webp\" /><span>Sai Kai Len drops their Composite Longbow onto the ground.</span></p>",
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "JQqO8Zxm2JfSPihu",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Sai Kai Len"
+    },
+    "flavor": "<h4 class=\"action\">\n    <strong>Release</strong>\n    <span class=\"action-glyph\">F</span>\n        <span class=\"subtitle degree-of-success\">\n            (<span>Drop</span>)\n        </span>\n</h4>\n    <div class=\"tags paizo-style\" data-tooltip-class=\"pf2e\">\n            <span class=\"tag\" data-slug=\"manipulate\" data-tooltip=\"PF2E.TraitDescriptionManipulate\">Manipulate</span>\n    </div>\n\n<hr class=\"action-divider\" />",
+    "style": 3,
+    "_id": "pc7gQazQqGQVO9I3",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1743704160304,
+    "whisper": [],
+    "blind": false,
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "flags": {
+        "core": {
+            "canPopout": true
+        },
+        "pf2e": {}
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1743704160305,
+        "modifiedTime": 1743704160305,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

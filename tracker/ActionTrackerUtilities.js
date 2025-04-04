@@ -34,22 +34,27 @@ export const ChatType = {
 };
 
 /**
- * Determines the type of a chat message based on its content.
- * @param {string} message - The HTML string of the chat message.
- * @returns {string} The type of the chat message (ACTION, ACTION-CARD, CHAT-CARD, or UNKNOWN).
+ * Determines the type of a chat message based on its flags and origin data.
+ * @param {object} message - The chat message object.
+ * @returns {object} An object containing the type of the chat message
  */
 export function determineChatType(message) {
-    if (message.includes("pf2e chat-card action-card")) {
-        return ChatType.ACTION_CARD;
-    }
-    if (message.includes("pf2e chat-card item-card")) {
+    console.debug("Processing message:", message);
+    
+    const contextType = message.flags?.pf2e?.context?.type;
+    const originType = message.flags?.pf2e?.origin?.type;
+
+    // Determine the type based on the origin type
+    if (contextType === "saving-throw") {
+        return ChatType.STATUS_UPDATE;
+    } else if ((message.content + message.flavor).includes("pf2e chat-card item-card")) {
         return ChatType.ITEM_CARD;
-    }
-    if (message.includes("class=\"action\"")) {
+    } else if ((message.content + message.flavor).includes("class=\"action\"")) {
         return ChatType.ACTION;
+    } else if ((message.content + message.flavor).includes("participant-conditions")) {
+        return ChatType.STATUS_UPDATE
     }
-    if (message.includes("participant-conditions")) {
-        return ChatType.STATUS_UPDATE; // Detect status updates
-    }
+    
+
     return ChatType.UNKNOWN;
 }

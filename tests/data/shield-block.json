@@ -1,0 +1,86 @@
+{
+    "style": 0,
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "JQqO8Zxm2JfSPihu",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Sai Kai Len"
+    },
+    "content": "<div class=\"pf2e chat-card item-card\" data-actor-id=\"KiGiuRE16eptMz63\" data-item-id=\"mcGXc4BE7Wa3mfhm\">\n    <header class=\"card-header flexrow\">\n        <img src=\"icons/sundries/books/book-red-exclamation.webp\" alt=\"Shield Block\" />\n        <h3>Shield Block <span class=\"action-glyph\">R</span></h3>\n    </header>\n\n    <div class=\"tags paizo-style\" data-tooltip-class=\"pf2e\">\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionGeneral\">General</span>\n    </div>\n\n    <div class=\"card-content\">\n        <p><strong>Trigger</strong> While you have your shield raised, you would take physical damage (bludgeoning, piercing, or slashing) from an attack.</p>\n<hr />\n<p>You snap your shield in place to ward off a blow. Your shield prevents you from taking an amount of damage up to the shield's Hardness. You and the shield each take any remaining damage, possibly breaking or destroying the shield.</p>\n    </div>\n\n        <footer>\n            <span>Feat 1</span>\n        </footer></div>",
+    "flags": {
+        "pf2e": {
+            "origin": {
+                "actor": "Actor.KiGiuRE16eptMz63",
+                "uuid": "Actor.KiGiuRE16eptMz63.Item.mcGXc4BE7Wa3mfhm",
+                "type": "feat",
+                "rollOptions": [
+                    "origin:type:character",
+                    "origin:signature:2074bd84-055f-5776-a3af-16dd60c3fc2c",
+                    "origin:participant:own-turn",
+                    "origin:participant:initiative:roll:29",
+                    "origin:participant:initiative:rank:1",
+                    "origin:participant:initiative:stat:perception",
+                    "origin:creature",
+                    "origin:level:14",
+                    "origin:heritage:celestial-envoy-kitsune",
+                    "origin:caster",
+                    "origin:caster:tradition:divine",
+                    "origin:deity:slug:the-lantern-king",
+                    "origin:ancestry:kitsune",
+                    "origin:trait:humanoid",
+                    "origin:trait:kitsune",
+                    "origin:effect:marshals-aura",
+                    "origin:mode:living",
+                    "origin:armored",
+                    "origin:size:2",
+                    "origin:size:medium",
+                    "origin:item:type:feat",
+                    "origin:item:id:mcGXc4BE7Wa3mfhm",
+                    "origin:item:shield-block",
+                    "origin:item:slug:shield-block",
+                    "origin:item:granter:type:feature",
+                    "origin:item:granter:id:uFyk03SACOv3kyJW",
+                    "origin:item:granter:shield-block",
+                    "origin:item:granter:slug:shield-block",
+                    "origin:item:granter:trait:champion",
+                    "origin:item:granter:trait:druid",
+                    "origin:item:granter:trait:exemplar",
+                    "origin:item:granter:trait:fighter",
+                    "origin:item:granter:trait:inventor",
+                    "origin:item:granter:level:1",
+                    "origin:item:granter:category:classfeature",
+                    "origin:item:trait:general",
+                    "origin:item:rarity:common",
+                    "origin:item:level:1",
+                    "origin:item:category:general",
+                    "origin:item:action:type:reaction",
+                    "origin:item:action:cost:1"
+                ]
+            }
+        },
+        "core": {
+            "canPopout": true
+        }
+    },
+    "whisper": [],
+    "blind": false,
+    "_id": "TdPBdYNHDZdRjxQx",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1743801338828,
+    "flavor": "",
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1743801338830,
+        "modifiedTime": 1743801338830,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

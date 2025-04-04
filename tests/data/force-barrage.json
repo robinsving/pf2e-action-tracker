@@ -1,0 +1,94 @@
+{
+    "style": 0,
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "c3GmxmvKUcQ3dYGf",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Lord Shade, The prepared"
+    },
+    "content": "<div class=\"pf2e chat-card item-card\" data-cast-rank=\"1\" data-actor-id=\"kVU6LEtflofhTzal\" data-item-id=\"zKvZIZEK1eKMLT5F\">\n    <header class=\"card-header flexrow\">\n        <img src=\"systems/pf2e/icons/spells/magic-missile.webp\" alt=\"Force Barrage\" />\n        <h3>Force Barrage <span class=\"action-glyph\">1 – 3</span></h3>\n        <h4 class=\"rank\">Spell 1</h4>\n    </header>\n\n    <section class=\"tags\" data-tooltip-class=\"pf2e\">\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionArcane\">Arcane</span>\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionConcentrate\">Concentrate</span>\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionForce\">Force</span>\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionManipulate\">Manipulate</span>\n    </section>\n\n    <section class=\"card-content\">\n        <p class=\"item-block-line last\">\n            <span>\n                <strong>Range</strong>\n                ;\n            </span>\n            <span>\n                <strong>Targets</strong>\n                1 creature\n            </span>\n    </p>\n\n<hr class=\"item-block-divider\" />\n<p>You fire a shard of solidified magic toward a creature that you can see. It automatically hits and deals 1d4+1 force damage. For each additional action you use when Casting the Spell, increase the number of shards you shoot by one, to a maximum of three shards for 3 actions. You choose the target for each shard individually. If you shoot more than one shard at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth.</p>\n<hr />\n<p><strong>Heightened (+2)</strong> You fire one additional shard with each action you spend.</p>\n    </section>\n\n    <section class=\"card-buttons\">\n                <section class=\"owner-buttons\">\n                        <div class=\"spell-button\">\n                            <button type=\"button\" data-action=\"spell-damage\" data-visibility=\"owner\">Roll Damage</button>\n                        </div>\n                </section>\n    </section>\n\n</div>",
+    "flags": {
+        "pf2e": {
+            "origin": {
+                "actor": "Actor.kVU6LEtflofhTzal",
+                "uuid": "Actor.kVU6LEtflofhTzal.Item.zKvZIZEK1eKMLT5F",
+                "type": "spell",
+                "rollOptions": [
+                    "origin:type:character",
+                    "origin:signature:475ccfb4-777c-5d83-b0bc-70bef152a3f4",
+                    "origin:participant:own-turn",
+                    "origin:participant:initiative:roll:22",
+                    "origin:participant:initiative:rank:3",
+                    "origin:participant:initiative:stat:perception",
+                    "origin:creature",
+                    "origin:level:1",
+                    "origin:caster",
+                    "origin:caster:tradition:arcane",
+                    "origin:caster:tradition:occult",
+                    "origin:mode:living",
+                    "origin:size:2",
+                    "origin:size:medium",
+                    "origin:item:type:spell",
+                    "origin:item:id:zKvZIZEK1eKMLT5F",
+                    "origin:item:force-barrage",
+                    "origin:item:slug:force-barrage",
+                    "origin:item:trait:concentrate",
+                    "origin:item:trait:force",
+                    "origin:item:trait:manipulate",
+                    "origin:item:rarity:common",
+                    "origin:item:magical",
+                    "origin:item:level:1",
+                    "magical",
+                    "origin:item:rank:1",
+                    "concentrate",
+                    "force",
+                    "manipulate",
+                    "origin:item:trait:arcane",
+                    "origin:item:spell-slot",
+                    "origin:item:ranged",
+                    "origin:item:duration:0",
+                    "origin:item:frequency:limited",
+                    "origin:item:damage:force",
+                    "origin:item:damage:type:force",
+                    "origin:item:damage:category:energy",
+                    "damaging-effect",
+                    "spellcasting:int",
+                    "spellcasting:attribute:int",
+                    "spellcasting:prepared",
+                    "spellcasting:category:prepared",
+                    "spellcasting:arcane",
+                    "spellcasting:tradition:arcane"
+                ],
+                "castRank": 1
+            },
+            "casting": {
+                "id": "R4j2HIaUaoF4Htgq",
+                "tradition": "arcane"
+            }
+        },
+        "core": {
+            "canPopout": true
+        }
+    },
+    "whisper": [],
+    "blind": false,
+    "_id": "AKL3t3VHUtenrmwY",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1743703589960,
+    "flavor": "",
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1743703589962,
+        "modifiedTime": 1743703589962,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "content": "<p class=\"action-content\"><img src=\"systems/pf2e/icons/equipment/weapons/fire-poi.webp\" /><span>Sai Kai Len draws their Fire Poi.</span></p>",
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "JQqO8Zxm2JfSPihu",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Sai Kai Len"
+    },
+    "flavor": "<h4 class=\"action\">\n    <strong>Interact</strong>\n    <span class=\"action-glyph\">1</span>\n        <span class=\"subtitle degree-of-success\">\n            (<span>Draw (1H)</span>)\n        </span>\n</h4>\n    <div class=\"tags paizo-style\" data-tooltip-class=\"pf2e\">\n            <span class=\"tag\" data-slug=\"manipulate\" data-tooltip=\"PF2E.TraitDescriptionManipulate\">Manipulate</span>\n    </div>\n\n<hr class=\"action-divider\" />",
+    "style": 3,
+    "_id": "dXOJjhpUYp3H5lTO",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1743704467628,
+    "whisper": [],
+    "blind": false,
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "flags": {
+        "core": {
+            "canPopout": true
+        },
+        "pf2e": {}
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1743704467629,
+        "modifiedTime": 1743704467629,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

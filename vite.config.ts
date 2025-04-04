@@ -4,13 +4,12 @@ import { defineConfig } from "vite";
 export default defineConfig({
     build: {
         outDir: "./dist",
-        sourcemap: false,
+        sourcemap: true,
         rollupOptions: {
             input: {
                 control: "./tracker/tracker.js"
             },
             output: {
-                sourcemap: true,
                 entryFileNames: 'module/entry-[name].js',
                 format: "es",
             },
@@ -26,4 +25,15 @@ export default defineConfig({
             hook: "writeBundle",
         }),
     ],
+    test: {
+        // Vitest configuration options
+        include: ['**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+        exclude: ['**/node_modules/**', '**/dist/**'],
+        globals: true,
+        setupFiles: "./vitest.setup.js", // Path to your setup file
+        coverage: {
+          provider: 'v8',
+          reporter: ['text', 'json'],
+        },
+      },
 });

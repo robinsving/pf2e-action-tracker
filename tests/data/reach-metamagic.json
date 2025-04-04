@@ -1,0 +1,85 @@
+{
+    "style": 0,
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "c3GmxmvKUcQ3dYGf",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Lord Shade, The prepared"
+    },
+    "content": "<div class=\"pf2e chat-card item-card\" data-actor-id=\"kVU6LEtflofhTzal\" data-item-id=\"aQTC2tfz51LXDLG8\">\n    <header class=\"card-header flexrow\">\n        <img src=\"icons/sundries/books/book-red-exclamation.webp\" alt=\"Reach Spell\" />\n        <h3>Reach Spell <span class=\"action-glyph\">1</span></h3>\n    </header>\n\n    <div class=\"tags paizo-style\" data-tooltip-class=\"pf2e\">\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionConcentrate\">Concentrate</span>\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionSpellshape\">Spellshape</span>\n            <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionWizard\">Wizard</span>\n    </div>\n\n    <div class=\"card-content\">\n        <p>You can extend your spells' range. If the next action you use is to Cast a Spell that has a range, increase that spell's range by 30 feet. As is standard for increasing spell ranges, if the spell normally has a range of touch, you extend its range to 30 feet.</p>\n    </div>\n\n        <footer>\n            <span>Feat 1</span>\n        </footer></div>",
+    "flags": {
+        "pf2e": {
+            "origin": {
+                "actor": "Actor.kVU6LEtflofhTzal",
+                "uuid": "Actor.kVU6LEtflofhTzal.Item.aQTC2tfz51LXDLG8",
+                "type": "feat",
+                "rollOptions": [
+                    "origin:type:character",
+                    "origin:signature:475ccfb4-777c-5d83-b0bc-70bef152a3f4",
+                    "origin:participant:own-turn",
+                    "origin:participant:initiative:roll:22",
+                    "origin:participant:initiative:rank:3",
+                    "origin:participant:initiative:stat:perception",
+                    "origin:creature",
+                    "origin:level:1",
+                    "origin:caster",
+                    "origin:caster:tradition:arcane",
+                    "origin:caster:tradition:occult",
+                    "origin:mode:living",
+                    "origin:size:2",
+                    "origin:size:medium",
+                    "origin:item:type:feat",
+                    "origin:item:id:aQTC2tfz51LXDLG8",
+                    "origin:item:reach-spell",
+                    "origin:item:slug:reach-spell",
+                    "origin:item:granter:type:feature",
+                    "origin:item:granter:id:L2RSeztlyGuuEKqm",
+                    "origin:item:granter:experimental-spellshaping",
+                    "origin:item:granter:slug:experimental-spellshaping",
+                    "origin:item:granter:trait:wizard",
+                    "origin:item:granter:tag:wizard-arcane-thesis",
+                    "origin:item:granter:level:1",
+                    "origin:item:granter:category:classfeature",
+                    "origin:item:trait:bard",
+                    "origin:item:trait:cleric",
+                    "origin:item:trait:concentrate",
+                    "origin:item:trait:druid",
+                    "origin:item:trait:oracle",
+                    "origin:item:trait:sorcerer",
+                    "origin:item:trait:spellshape",
+                    "origin:item:trait:witch",
+                    "origin:item:trait:wizard",
+                    "origin:item:rarity:common",
+                    "origin:item:level:1",
+                    "origin:item:category:class",
+                    "origin:item:action:type:action",
+                    "origin:item:action:cost:1"
+                ]
+            }
+        },
+        "core": {
+            "canPopout": true
+        }
+    },
+    "whisper": [],
+    "blind": false,
+    "_id": "pDedkY44RWTL2h6X",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1743703633039,
+    "flavor": "",
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1743703633040,
+        "modifiedTime": 1743703633040,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

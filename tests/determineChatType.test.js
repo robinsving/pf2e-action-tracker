@@ -1,0 +1,82 @@
+import { determineChatType, ChatType } from "../tracker/ActionTrackerUtilities.js";
+
+import unarmedStrike from "./data/unarmed-strike.json";
+import brambleBush from "./data/bramble-bush.json";
+import forceBarrage from "./data/force-barrage.json";
+import reachMetamagic from "./data/reach-metamagic.json";
+import arcaneBond from "./data/arcane-bond.json";
+import interactDrop from "./data/interact-drop.json";
+import interactDraw from "./data/interact-draw.json";
+import fortitudeSave from "./data/fortitude-saving-throw.json";
+import victoryPlate from "./data/victory-plate.json";
+import shieldBlock from "./data/shield-block.json";
+
+describe("determineChatType", () => {
+    test("should handle full message for an unarmed strike", () => {
+        const result = determineChatType(unarmedStrike);
+        expect(result).toEqual(ChatType.ACTION);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle full message for a spell", () => {
+        const result = determineChatType(brambleBush);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for odd spell", () => {
+        const result = determineChatType(forceBarrage);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for reach metamagic", () => {
+        const result = determineChatType(reachMetamagic);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for arcaneBond", () => {
+        const result = determineChatType(arcaneBond);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for drop", () => {
+        const result = determineChatType(interactDrop);
+        expect(result).toEqual(ChatType.ACTION);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for draw", () => {
+        const result = determineChatType(interactDraw);
+        expect(result).toEqual(ChatType.ACTION);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for feat", () => {
+        const result = determineChatType(fortitudeSave);
+        expect(result).toEqual(ChatType.STATUS_UPDATE);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for victory-plate", () => {
+        const result = determineChatType(victoryPlate);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for shield-block", () => {
+        const result = determineChatType(shieldBlock);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
