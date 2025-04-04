@@ -2,7 +2,7 @@
     "id": "pf2e-action-tracker",
     "title": "PF2e Action Tracker",
     "description": "A module for tracking in-combat Action count.",
-    "version": "0.1.1",
+    "version": "0.1.0",
     "authors": [{"name": "Robin Sving", "email":"robin.sving@gmail.com", "discord":"@.wigglemaster"}],
     "compatibility": {
         "minimum": "10",
@@ -27,7 +27,7 @@
     },
     "url": "https://github.com/robinsving/pf2e-action-tracker",
     "manifest": "https://github.com/robinsving/pf2e-action-tracker/releases/latest/download/module.json",
-    "download": "https://github.com/robinsving/pf2e-action-tracker/releases/latest/download/pir-release.zip",
+    "download": "https://github.com/robinsving/pf2e-action-tracker/releases/latest/download/pat-release.zip",
     "bugs": "https://github.com/robinsving/pf2e-action-tracker/issues",
     "readme": "https://raw.githubusercontent.com/robinsving/pf2e-action-tracker/main/README.md",
     "changelog": "https://raw.githubusercontent.com/robinsving/pf2e-action-tracker/main/CHANGELOG.md"
