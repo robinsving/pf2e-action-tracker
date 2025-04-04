@@ -10,6 +10,7 @@ import interactDraw from "./data/interact-draw.json";
 import fortitudeSave from "./data/fortitude-saving-throw.json";
 import victoryPlate from "./data/victory-plate.json";
 import shieldBlock from "./data/shield-block.json";
+import criticalDamage from "./data/critical-damage.json";
 
 describe("determineChatType", () => {
     test("should handle full message for an unarmed strike", () => {
@@ -63,7 +64,7 @@ describe("determineChatType", () => {
 describe("determineChatType", () => {
     test("should handle type for feat", () => {
         const result = determineChatType(fortitudeSave);
-        expect(result).toEqual(ChatType.STATUS_UPDATE);
+        expect(result).toEqual(ChatType.IGNORED);
     });
 });
 
@@ -78,5 +79,12 @@ describe("determineChatType", () => {
     test("should handle type for shield-block", () => {
         const result = determineChatType(shieldBlock);
         expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for critical-damage", () => {
+        const result = determineChatType(criticalDamage);
+        expect(result).toEqual(ChatType.IGNORED);
     });
 });

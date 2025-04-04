@@ -29,7 +29,7 @@ export const ChatType = {
     ACTION: "ACTION",
     ACTION_CARD: "ACTION_CARD",
     ITEM_CARD: "ITEM_CARD",
-    STATUS_UPDATE: "STATUS_UPDATE", // New chat type for status updates
+    IGNORED: "STATUS_UPDATE", // New chat type for status updates
     UNKNOWN: "UNKNOWN",
 };
 
@@ -45,14 +45,14 @@ export function determineChatType(message) {
     const originType = message.flags?.pf2e?.origin?.type;
 
     // Determine the type based on the origin type
-    if (contextType === "saving-throw") {
-        return ChatType.STATUS_UPDATE;
+    if (["damage-roll", "saving-throw"].includes(contextType)) {
+        return ChatType.IGNORED;
     } else if ((message.content + message.flavor).includes("pf2e chat-card item-card")) {
         return ChatType.ITEM_CARD;
     } else if ((message.content + message.flavor).includes("class=\"action\"")) {
         return ChatType.ACTION;
     } else if ((message.content + message.flavor).includes("participant-conditions")) {
-        return ChatType.STATUS_UPDATE
+        return ChatType.IGNORED
     }
     
 

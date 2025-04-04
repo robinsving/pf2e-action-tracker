@@ -101,7 +101,7 @@ export class ActionTracker extends Application {
             case ChatType.ITEM_CARD:
                 actions = this.parseChatCardMessage(message.content);
                 break;
-            case ChatType.STATUS_UPDATE:
+            case ChatType.IGNORED:
                 this.updateStatusesFromMessage(message.content);
                 break;
             default:
