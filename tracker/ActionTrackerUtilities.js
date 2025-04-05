@@ -49,6 +49,8 @@ export function determineChatType(message) {
         return ChatType.IGNORED;
     } else if ((message.content + message.flavor).includes("pf2e chat-card item-card")) {
         return ChatType.ITEM_CARD;
+    } else if ((message.content + message.flavor).includes("pf2e chat-card action-card")) {
+        return ChatType.ACTION_CARD;
     } else if ((message.content + message.flavor).includes("class=\"action\"")) {
         return ChatType.ACTION;
     } else if ((message.content + message.flavor).includes("participant-conditions")) {

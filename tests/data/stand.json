@@ -1,0 +1,78 @@
+{
+    "style": 0,
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "JQqO8Zxm2JfSPihu",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Sai Kai Len"
+    },
+    "content": "<div class=\"pf2e chat-card action-card\" data-actor-id=\"KiGiuRE16eptMz63\" data-item-id=\"eVUfusnUCOisVcPc\">\n    <header class=\"card-header flexrow\">\n        <img src=\"systems/pf2e/icons/actions/OneAction.webp\" alt=\"Stand\" />\n        <h3>Stand <span class=\"action-glyph\">1</span></h3>\n    </header>\n\n    <div class=\"tags paizo-style\" data-tooltip-class=\"pf2e\">\n                <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionMove\">Move</span>\n    </div>\n\n        <div class=\"card-content\">\n            <p>You stand up from <a class=\"content-link\" draggable=\"true\" data-link data-uuid=\"Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60\" data-id=\"j91X7x0XSomq8d60\" data-type=\"Item\" data-pack=\"pf2e.conditionitems\" data-tooltip=\"Condition Item\"><i class=\"fa-solid fa-face-zany\"></i>Prone</a>.</p>\n        </div>\n\n</div>",
+    "flags": {
+        "pf2e": {
+            "origin": {
+                "actor": "Actor.KiGiuRE16eptMz63",
+                "uuid": "Actor.KiGiuRE16eptMz63.Item.eVUfusnUCOisVcPc",
+                "type": "action",
+                "rollOptions": [
+                    "origin:type:character",
+                    "origin:signature:2074bd84-055f-5776-a3af-16dd60c3fc2c",
+                    "origin:participant:own-turn",
+                    "origin:participant:initiative:roll:29",
+                    "origin:participant:initiative:rank:1",
+                    "origin:participant:initiative:stat:perception",
+                    "origin:creature",
+                    "origin:level:14",
+                    "origin:heritage:celestial-envoy-kitsune",
+                    "origin:caster",
+                    "origin:caster:tradition:divine",
+                    "origin:deity:slug:the-lantern-king",
+                    "origin:ancestry:kitsune",
+                    "origin:trait:humanoid",
+                    "origin:trait:kitsune",
+                    "origin:effect:marshals-aura",
+                    "origin:condition:slowed",
+                    "origin:condition:slowed:1",
+                    "origin:condition:stunned",
+                    "origin:condition:stunned:2",
+                    "origin:condition:prone",
+                    "origin:condition:off-guard",
+                    "origin:mode:living",
+                    "origin:armored",
+                    "origin:size:2",
+                    "origin:size:medium",
+                    "origin:item:type:action",
+                    "origin:item:id:eVUfusnUCOisVcPc",
+                    "origin:item:stand",
+                    "origin:item:slug:stand",
+                    "origin:item:trait:move",
+                    "origin:item:action:type:action",
+                    "origin:item:action:cost:1"
+                ]
+            }
+        },
+        "core": {
+            "canPopout": true
+        }
+    },
+    "whisper": [],
+    "blind": false,
+    "_id": "modRXDlJCkVmChij",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1743804068768,
+    "flavor": "",
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1743804068768,
+        "modifiedTime": 1743804068768,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

@@ -5,12 +5,13 @@ import brambleBush from "./data/bramble-bush.json";
 import forceBarrage from "./data/force-barrage.json";
 import reachMetamagic from "./data/reach-metamagic.json";
 import arcaneBond from "./data/arcane-bond.json";
-import interactDrop from "./data/interact-drop.json";
+import interactDrop from "./data/release-drop.json";
 import interactDraw from "./data/interact-draw.json";
 import fortitudeSave from "./data/fortitude-saving-throw.json";
 import victoryPlate from "./data/victory-plate.json";
 import shieldBlock from "./data/shield-block.json";
 import criticalDamage from "./data/critical-damage.json";
+import stand from "./data/stand.json";
 
 describe("determineChatType", () => {
     test("should handle full message for an unarmed strike", () => {
@@ -86,5 +87,12 @@ describe("determineChatType", () => {
     test("should handle type for critical-damage", () => {
         const result = determineChatType(criticalDamage);
         expect(result).toEqual(ChatType.IGNORED);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for stand", () => {
+        const result = determineChatType(stand);
+        expect(result).toEqual(ChatType.ACTION_CARD);
     });
 });

@@ -1,5 +1,5 @@
 import { id as SCRIPT_ID, title } from "../module.json";
-import { info, settings, determineChatType, ChatType } from "./ActionTrackerUtilities.js";
+import { info, debug, settings, determineChatType, ChatType } from "./ActionTrackerUtilities.js";
 
 export class ActionTracker extends Application {
     constructor(options) {
@@ -105,7 +105,7 @@ export class ActionTracker extends Application {
                 this.updateStatusesFromMessage(message.content);
                 break;
             default:
-                info(`Unknown chat type for message: ${message.content}`);
+                debug(`Unknown chat type for message: ${message.content}`);
                 return;
         }
 
@@ -130,7 +130,9 @@ export class ActionTracker extends Application {
             // Exclude actions containing specific keywords
             const excludedKeywords = ["saving throw", "initiative"];
             if (!excludedKeywords.some(keyword => actionName.includes(keyword))) {
-                const cost = actionGlyph ? parseInt(actionGlyph.textContent.trim(), 10) : 1; // Default cost is 1 if no glyph is present
+                const trimmedCost = actionGlyph?.textContent?.trim();
+                const parsedCost = parseInt(trimmedCost, 10);
+                const cost = !isNaN(parsedCost) ? parsedCost : ("" + trimmedCost).length === 1 ? 0 : 1;
                 
                 const subtitle = actionSubtitle ? actionSubtitle.textContent.trim() : null;
                 var name = actionElement.textContent.trim() + (subtitle ? ` (${subtitle})` : "");
