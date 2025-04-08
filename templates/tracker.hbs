@@ -1,5 +1,4 @@
 <div class="tracker-container">
-    <h2>Action Tracker</h2>
      {{#if isGM}}
     <div class="round-tracker">
         <button class="prev-turn-btn" title="Previous Turn">
@@ -11,7 +10,7 @@
         </button>
     </div>
     {{/if}}
-    <p id="character-name">Character: <span>{{characterName}}</span></p>
+    <h3><p id="character-name">Character: <span>{{characterName}}</span></p></h3>
     <div id="status-effects">
         {{#each statuses}}
         <div class="status-badge">

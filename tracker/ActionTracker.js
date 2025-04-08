@@ -1,5 +1,5 @@
 import { id as SCRIPT_ID, title } from "../module.json";
-import { info, debug, settings, determineChatType, ChatType } from "./ActionTrackerUtilities.js";
+import { info, debug, settings, getSettings, determineChatType, ChatType } from "./ActionTrackerUtilities.js";
 
 export class ActionTracker extends Application {
     constructor(options) {
@@ -30,7 +30,12 @@ export class ActionTracker extends Application {
         Hooks.on("renderChatMessage", this.handleChatMessage.bind(this));
     }
 
-    renderCombat() {
+    renderTracker() {
+        // Check if the Action Tracker is enabled
+        if (!getSettings(settings.enabled.id)) {
+            return;
+        }
+
         // Get the active combat in the current scene
         const activeScene = game.scenes?.active; // Get the currently active scene
         const activeCombat = game.combats?.find(c => c.active && c.scene.id === activeScene?.id);
@@ -52,6 +57,15 @@ export class ActionTracker extends Application {
 
         // Render without bringing to front
         this.render(true);
+    }
+
+    _unrender() {
+        // Unrender the tracker and remove hooks
+        if (this.rendered) {
+            this.close();
+        }
+        Hooks.off("updateCombat", this.handleCombatChange.bind(this));
+        Hooks.off("renderChatMessage", this.handleChatMessage.bind(this));
     }
     
     /** @override */
@@ -79,7 +93,7 @@ export class ActionTracker extends Application {
                 if (currentCombatant) {
                     this.resetActions(currentCombatant.id);
                 }
-                this.renderCombat();
+                this.renderTracker();
             }
         }
     }

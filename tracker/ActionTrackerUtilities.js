@@ -1,6 +1,7 @@
 import { id as SCRIPT_ID, title } from "../module.json";
 
 export const settings = {
+    enabled: { id: "enabled", name: "Enable Action Tracker", hint: "Enable or disable the Action Tracker." },
     gm: { id: "forGmOnly", name: "Access to GM only", hint: "If 'false', users will be able to run for their owned characters" },
     debug: { id: "debugMode", name: "Enable Debugging", hint: "Print debug to console log" },
     autoRenderOnSceneChange: { id: "autoRenderOnSceneChange", name: "Auto Render on Scene Change", hint: "Automatically render the Action Tracker when the scene changes." },

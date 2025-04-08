@@ -1,5 +1,5 @@
 import { id as SCRIPT_ID, title } from "../module.json";
-import { info, debug, settings } from "./ActionTrackerUtilities.js";
+import { info, debug, settings, getSettings } from "./ActionTrackerUtilities.js";
 import { ActionTracker } from "./ActionTracker.js";
 
 let isInitialized = false;
@@ -20,12 +20,18 @@ function _renderActionTracker(context = "default") {
         // Scene change triggered before initialization. Ignoring
         return;
     }
+    
+    if (!getSettings(settings.enabled.id)) {
+        // Setting is disabled. Ignoring
+        return;
+    }
+
     // Check if there is an active combat in the current scene
     const activeCombat = game.combats?.find(c => c.active && c.scene.id === game.scenes?.current?.id);
 
     const tracker = API.actionTrackerApp();
     if (activeCombat) {
-        tracker.renderCombat();
+        tracker.renderTracker();
         debug(`${title} rendered for ${context}.`);
     } else if (tracker.rendered) {
         tracker.close();
@@ -35,6 +41,24 @@ function _renderActionTracker(context = "default") {
 
 // Register settings during the "init" hook
 Hooks.once("init", () => {
+
+    game.settings.register(SCRIPT_ID, settings.enabled.id, {
+        name: settings.enabled.name,
+        hint: settings.enabled.hint,
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: true,
+        onChange: value => {
+            const tracker = API.actionTrackerApp();
+            if (value) {
+                tracker.renderTracker();
+            } else {
+                tracker._unrender();
+            }
+        }
+    });
+
     game.settings.register(SCRIPT_ID, settings.autoRenderOnSceneChange.id, {
         name: settings.autoRenderOnSceneChange.name,
         hint: settings.autoRenderOnSceneChange.hint,
