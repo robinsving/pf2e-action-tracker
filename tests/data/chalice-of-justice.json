@@ -1,0 +1,93 @@
+{
+    "style": 0,
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "JQqO8Zxm2JfSPihu",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Sai Kai Len"
+    },
+    "content": "<div class=\"pf2e chat-card weapon-card\" data-actor-id=\"KiGiuRE16eptMz63\" data-item-id=\"Il6gkVpfLz8H44to\">\n    <header class=\"card-header flexrow\">\n        <img src=\"icons/weapons/swords/greatsword-guard-gold-worn.webp\" alt=\"Chalice of Justice\" />\n        <h3>Chalice of Justice</h3>\n    </header>\n\n    <div class=\"tags paizo-style\" data-tooltip-class=\"pf2e\">\n            <span class=\"tag rarity uncommon\" data-trait data-tooltip=\"PF2E.TraitDescriptionUncommon\">Uncommon</span>\n                <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionDivine\">Divine</span>\n                <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionHoly\">Holy</span>\n                <span class=\"tag\" data-trait data-tooltip=\"PF2E.TraitDescriptionVersatile\">Versatile P</span>\n        <span class=\"tag tag_material\">Cold Iron (Standard-Grade)</span>\n    </div>\n\n    <div class=\"card-content\">\n        <p>This gleaming golden sword is a <em>+2 greater striking holy cold iron longsword</em> given only to the worthiest heroes of a holy faith. It's made of a sacred, secret alloy that makes the blade both cold iron and silver. If you're unholy, you're <a class=\"content-link\" draggable=\"true\" data-link data-uuid=\"Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR\" data-id=\"4D2KBtexWXa6oUMR\" data-type=\"Item\" data-pack=\"pf2e.conditionitems\" data-tooltip=\"Condition Item\"><i class=\"fa-solid fa-face-zany\"></i>Drained 2</a> while holding a <em>chalice of justice</em>. You can't recover from this condition while holding the weapon.</p><hr /><p><strong>Activate—Sip of Justice</strong> <span class=\"action-glyph\"><strong>1</strong></span> (manipulate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> The pommel of the weapon transmutes into the shape of a miniature chalice. You drink deep from the chalice and regain <a class=\"inline-roll roll\" data-formula=\"{14[healing]}\" data-base-formula=\"(@item.level)[healing]\" data-tooltip=\"14\" data-damage-roll=\"(@item.level)[healing]\" data-traits=\"divine,holy,versatile-p\" data-item-id=\"Il6gkVpfLz8H44to\" data-flavor=\"Chalice of Justice\"><i class=\"fa-solid fa-calculator\"></i><span>HP</span></a> equal to the chalice's level. If you're holy, you regain double the <a class=\"inline-roll roll altered\" data-formula=\"{28[healing]}\" data-base-formula=\"(2*@item.level)[healing]\" data-tooltip=\"28\" data-damage-roll=\"(2*@item.level)[healing]\" data-traits=\"divine,holy,versatile-p\" data-item-id=\"Il6gkVpfLz8H44to\" data-flavor=\"Chalice of Justice\"><i class=\"fa-solid fa-calculator\"></i><span>HP</span></a>, and for 1 minute, whenever you critically hit an unholy creature with the <em>chalice of justice</em>, the creature takes <a class=\"inline-roll roll\" data-formula=\"{2d6[spirit,persistent]}\" data-base-formula=\"2d6[persistent,spirit]\" data-damage-roll=\"2d6[persistent,spirit]\" data-traits=\"divine,holy,versatile-p\" data-item-id=\"Il6gkVpfLz8H44to\" draggable=\"true\" data-persistent data-flavor=\"Chalice of Justice\"><i class=\"fa-solid fa-dice-d6\"></i><span>2d6 persistent spirit</span></a> damage, and it's <a class=\"content-link\" draggable=\"true\" data-link data-uuid=\"Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3\" data-id=\"xYTAsEpcJE1Ccni3\" data-type=\"Item\" data-pack=\"pf2e.conditionitems\" data-tooltip=\"Condition Item\"><i class=\"fa-solid fa-face-zany\"></i>Slowed 1</a> for 1 round. The persistent spirit damage has the holy trait.</p>\n<p><a class=\"content-link\" draggable=\"true\" data-link data-uuid=\"Compendium.pf2e.equipment-effects.Item.czysaN0cMLJSOH4t\" data-id=\"czysaN0cMLJSOH4t\" data-type=\"Item\" data-pack=\"pf2e.equipment-effects\" data-tooltip=\"Effect Item\"><i class=\"fa-solid fa-person-rays\"></i>Effect: Sip of Justice</a></p><hr /><p><strong>Craft Requirements</strong> You're holy.</p>\n    </div>\n\n    <footer>\n        <span>Item 14</span>\n        <span>Price: 4500 gp</span>\n            <span>Martial Weapon</span>\n    </footer>\n</div>",
+    "flags": {
+        "pf2e": {
+            "origin": {
+                "actor": "Actor.KiGiuRE16eptMz63",
+                "uuid": "Actor.KiGiuRE16eptMz63.Item.Il6gkVpfLz8H44to",
+                "type": "weapon",
+                "rollOptions": [
+                    "origin:type:character",
+                    "origin:signature:2074bd84-055f-5776-a3af-16dd60c3fc2c",
+                    "origin:participant:own-turn",
+                    "origin:participant:initiative:roll:29",
+                    "origin:participant:initiative:rank:1",
+                    "origin:participant:initiative:stat:perception",
+                    "origin:creature",
+                    "origin:level:14",
+                    "origin:heritage:celestial-envoy-kitsune",
+                    "origin:caster",
+                    "origin:caster:tradition:divine",
+                    "origin:deity:slug:the-lantern-king",
+                    "origin:ancestry:kitsune",
+                    "origin:trait:humanoid",
+                    "origin:trait:kitsune",
+                    "origin:condition:slowed",
+                    "origin:condition:slowed:1",
+                    "origin:condition:stunned",
+                    "origin:condition:stunned:1",
+                    "origin:effect:marshals-aura",
+                    "origin:mode:living",
+                    "origin:armored",
+                    "origin:size:2",
+                    "origin:size:medium",
+                    "origin:item:type:weapon",
+                    "origin:item:id:Il6gkVpfLz8H44to",
+                    "origin:item:chalice-of-justice",
+                    "origin:item:slug:chalice-of-justice",
+                    "origin:item:trait:divine",
+                    "origin:item:trait:holy",
+                    "origin:item:trait:versatile-p",
+                    "origin:item:trait:versatile",
+                    "origin:item:rarity:uncommon",
+                    "origin:item:magical",
+                    "origin:item:level:14",
+                    "origin:item:material:cold-iron",
+                    "origin:item:category:martial",
+                    "origin:item:group:sword",
+                    "origin:item:base:longsword",
+                    "origin:item:bulk:1",
+                    "origin:item:usage:hands:1",
+                    "origin:item:damage:type:slashing",
+                    "origin:item:damage:category:physical",
+                    "origin:item:damage:die:number:3",
+                    "origin:item:damage:die:faces:8",
+                    "origin:item:damage-dice:3",
+                    "origin:item:melee",
+                    "origin:item:rune:property:holy"
+                ]
+            }
+        },
+        "core": {
+            "canPopout": true
+        }
+    },
+    "whisper": [],
+    "blind": false,
+    "_id": "tRkyKVUBY2eviZGJ",
+    "type": "base",
+    "system": {},
+    "author": "JO2te57bCRbZS9jS",
+    "timestamp": 1744138920253,
+    "flavor": "",
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1744138920254,
+        "modifiedTime": 1744138920254,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}

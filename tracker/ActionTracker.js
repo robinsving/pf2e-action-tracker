@@ -160,7 +160,7 @@ export class ActionTracker extends Application {
         const doc = parser.parseFromString(content, "text/html");
 
         const actions = [];
-        const chatCards = doc.querySelectorAll(".pf2e.chat-card.item-card");
+        const chatCards = doc.querySelectorAll(".pf2e.chat-card");
         this._pushActionGlyphs(chatCards, actions);
         return actions;
     }

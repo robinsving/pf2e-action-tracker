@@ -12,6 +12,8 @@ import victoryPlate from "./data/victory-plate.json";
 import shieldBlock from "./data/shield-block.json";
 import criticalDamage from "./data/critical-damage.json";
 import stand from "./data/stand.json";
+import chaliceOfJustice from "./data/chalice-of-justice.json";
+import arcanaCheck from "./data/arcana-check.json";
 
 describe("determineChatType", () => {
     test("should handle full message for an unarmed strike", () => {
@@ -94,5 +96,19 @@ describe("determineChatType", () => {
     test("should handle type for stand", () => {
         const result = determineChatType(stand);
         expect(result).toEqual(ChatType.ACTION_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for chaliceOfJustice", () => {
+        const result = determineChatType(chaliceOfJustice);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for arcanaCheck", () => {
+        const result = determineChatType(arcanaCheck);
+        expect(result).toEqual(ChatType.IGNORED);
     });
 });

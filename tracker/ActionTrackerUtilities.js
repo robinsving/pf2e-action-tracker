@@ -45,9 +45,11 @@ export function determineChatType(message) {
     const originType = message.flags?.pf2e?.origin?.type;
 
     // Determine the type based on the origin type
-    if (["damage-roll", "saving-throw"].includes(contextType)) {
+    if (["damage-roll", "saving-throw", "skill-check"].includes(contextType)) {
         return ChatType.IGNORED;
     } else if ((message.content + message.flavor).includes("pf2e chat-card item-card")) {
+        return ChatType.ITEM_CARD;
+    } else if ((message.content + message.flavor).includes("pf2e chat-card weapon-card")) {
         return ChatType.ITEM_CARD;
     } else if ((message.content + message.flavor).includes("pf2e chat-card action-card")) {
         return ChatType.ACTION_CARD;
