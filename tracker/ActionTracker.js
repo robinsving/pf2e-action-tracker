@@ -278,6 +278,7 @@ export class ActionTracker extends Application {
             statuses: showStatusIcons ? this.statuses : [], // Include statuses only if the setting is enabled
             showTurnButtons: game.user.isGM, // Show turn buttons only for GMs
             hasUncertainCosts, // Include flag for uncertain costs
+            isGM: game.user.isGM, // Include flag for GM status
         };
     }
 }

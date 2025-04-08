@@ -1,5 +1,6 @@
 <div class="tracker-container">
     <h2>Action Tracker</h2>
+     {{#if isGM}}
     <div class="round-tracker">
         <button class="prev-turn-btn" title="Previous Turn">
             <i class="fas fa-arrow-left"></i>
@@ -9,6 +10,7 @@
             <i class="fas fa-arrow-right"></i>
         </button>
     </div>
+    {{/if}}
     <p id="character-name">Character: <span>{{characterName}}</span></p>
     <div id="status-effects">
         {{#each statuses}}
