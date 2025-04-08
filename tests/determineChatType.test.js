@@ -14,6 +14,7 @@ import criticalDamage from "./data/critical-damage.json";
 import stand from "./data/stand.json";
 import chaliceOfJustice from "./data/chalice-of-justice.json";
 import arcanaCheck from "./data/arcana-check.json";
+import participantConditions from "./data/participant-conditions.json";
 
 describe("determineChatType", () => {
     test("should handle full message for an unarmed strike", () => {
@@ -110,5 +111,12 @@ describe("determineChatType", () => {
     test("should handle type for arcanaCheck", () => {
         const result = determineChatType(arcanaCheck);
         expect(result).toEqual(ChatType.IGNORED);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for participant-conditions", () => {
+        const result = determineChatType(participantConditions);
+        expect(result).toEqual(ChatType.STATUS_UPDATE);
     });
 });

@@ -30,7 +30,8 @@ export const ChatType = {
     ACTION: "ACTION",
     ACTION_CARD: "ACTION_CARD",
     ITEM_CARD: "ITEM_CARD",
-    IGNORED: "STATUS_UPDATE", // New chat type for status updates
+    STATUS_UPDATE: "STATUS_UPDATE",
+    IGNORED: "IGNORED",
     UNKNOWN: "UNKNOWN",
 };
 
@@ -57,7 +58,7 @@ export function determineChatType(message) {
     } else if ((message.content + message.flavor).includes("class=\"action\"")) {
         return ChatType.ACTION;
     } else if ((message.content + message.flavor).includes("participant-conditions")) {
-        return ChatType.IGNORED
+        return ChatType.STATUS_UPDATE
     }
     
 

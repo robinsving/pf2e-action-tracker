@@ -1,0 +1,37 @@
+{
+    "author": "JO2te57bCRbZS9jS",
+    "speaker": {
+        "scene": "MSHO9s465zhZIuH7",
+        "token": "JQqO8Zxm2JfSPihu",
+        "actor": "KiGiuRE16eptMz63",
+        "alias": "Sai Kai Len"
+    },
+    "content": "<div class=\"participant-conditions\">\n    <h4>Current Conditions</h4>\n    <ul data-tooltip-class=\"pf2e\" data-tooltip-direction=\"LEFT\">\n            <li data-tooltip=\"&lt;p&gt;You've become senseless. You can't act. Stunned usually includes a value, which indicates how many total actions you lose, possibly over multiple turns, from being stunned. Each time you regain actions, reduce the number you regain by your stunned value, then reduce your stunned value by the number of actions you lost. For example, if you were stunned 4, you would lose all 3 of your actions on your turn, reducing you to stunned 1; on your next turn, you would lose 1 more action, and then be able to use your remaining 2 actions normally. Stunned might also have a duration instead, such as &quot;stunned for 1 minute,&quot; causing you to lose all your actions for the duration.&lt;/p&gt;\n&lt;p&gt;Stunned overrides &lt;a class=&quot;content-link&quot; draggable=&quot;true&quot; data-link data-uuid=&quot;Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3&quot; data-id=&quot;xYTAsEpcJE1Ccni3&quot; data-type=&quot;Item&quot; data-pack=&quot;pf2e.conditionitems&quot; data-tooltip=&quot;Condition Item&quot;&gt;&lt;i class=&quot;fa-solid fa-face-zany&quot;&gt;&lt;/i&gt;Slowed&lt;/a&gt;. If the duration of your stunned condition ends while you are slowed, you count the actions lost to the stunned condition toward those lost to being slowed. So, if you were stunned 1 and slowed 2 at the beginning of your turn, you would lose 1 action from stunned, and then lose only 1 additional action by being slowed, so you would still have 1 action remaining to use that turn.&lt;/p&gt;\">\n                <img src=\"systems/pf2e/icons/conditions/stunned.webp\" />\n                <span class=\"name\">Stunned 1</span>\n            </li>\n    </ul>\n</div>",
+    "style": 0,
+    "_id": "53MQYZO7BtBu9SNV",
+    "type": "base",
+    "system": {},
+    "timestamp": 1744143897557,
+    "flavor": "",
+    "whisper": [],
+    "blind": false,
+    "rolls": [],
+    "sound": null,
+    "emote": false,
+    "flags": {
+        "core": {
+            "canPopout": true
+        },
+        "pf2e": {}
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.11.0",
+        "createdTime": 1744143897557,
+        "modifiedTime": 1744143897557,
+        "lastModifiedBy": "JO2te57bCRbZS9jS"
+    }
+}
