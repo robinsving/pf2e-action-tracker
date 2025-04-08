@@ -94,8 +94,8 @@ Hooks.once("ready", () => {
 });
 
 // Automatically open the Action Tracker when an encounter starts
-Hooks.on("createCombat", (combat) => {
-    debug(`Combat created: ${combat.name}.`);
+Hooks.on("combatStart", (combat) => {
+    debug(`Combat started: ${combat.name}.`);
     _renderActionTracker("new combat");
 });
 
