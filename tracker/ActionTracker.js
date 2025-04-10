@@ -43,20 +43,18 @@ export class ActionTracker extends Application {
         if (activeCombat) {
             const currentCombatant = activeCombat.combatants.get(activeCombat.current.combatantId);
             this.currentRound = activeCombat?.round || 0; // Calculate the current round
-            if (currentCombatant?.actor) {
-                this.currentActor = currentCombatant.actor;
+            this.currentActor = currentCombatant?.actor;
 
-                // Initialize tracked actions for the current actor if not already present
-                if (!this.trackedActions[this.currentActor.id]) {
-                    this.trackedActions[this.currentActor.id] = [];
-                }
-            } else {
-                this.currentActor = null; // Reset current actor if not found
+            const isOwnedByUser = currentCombatant?.isOwner || false; // Ensure currentCombatant is defined
+
+            const isGM = game.user.isGM;
+
+            if (isOwnedByUser || isGM) {
+                this.render(true);
+                return;
             }
         }
-
-        // Render without bringing to front
-        this.render(true);
+        this.close(); // Close the tracker if not owned by the user or if no active combat
     }
 
     _unrender() {
@@ -78,24 +76,18 @@ export class ActionTracker extends Application {
         html.find(".next-turn-btn").on("click", this._onNextTurn.bind(this)); // Listener for "Next Turn" button
     }
 
-    handleCombatChange(combat, changed) {
+    handleCombatChange(combat) {
         this.statuses = []; // Reset statuses on turn change
         this.currentRound = combat?.current?.round || this.currentRound; // Update the current round
-
+        
         const currentCombatant = combat.combatants.get(combat.current.combatantId)?.actor;
-        const isGM = game.user.isGM;
+        
+        this.currentActor = currentCombatant || null; // Set to null if no combatant
 
-        if (currentCombatant || isGM) {
-            const isOwnedByUser = currentCombatant?.isOwner || false; // Ensure currentCombatant is defined
+        // Initialize tracked actions for the current actor if not already present
+        this.trackedActions[this.currentActor.id] = [];
 
-            if (isOwnedByUser || isGM) {
-                this.currentActor = currentCombatant || null; // Set to null if no combatant
-                if (currentCombatant) {
-                    this.resetActions(currentCombatant.id);
-                }
-                this.renderTracker();
-            }
-        }
+        this.renderTracker(); // Render the tracker
     }
 
     handleChatMessage(message) {
@@ -125,7 +117,11 @@ export class ActionTracker extends Application {
 
         // Track actions if any were found
         if (actions.length > 0) {
-            this.trackActions(actorId, actions);
+            if (!this.trackedActions[actorId]) {
+                this.trackedActions[actorId] = [];
+            }
+            this.trackedActions[actorId].push(...actions);
+            this.render(false);
         }
     }
 
@@ -179,6 +175,25 @@ export class ActionTracker extends Application {
         return actions;
     }
 
+    
+    updateStatusesFromMessage(content) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, "text/html");
+
+        const newStatuses = [];
+        const conditions = doc.querySelectorAll(".participant-conditions ul li");
+        conditions.forEach(condition => {
+            const icon = condition.querySelector("img")?.src || "";
+            const name = condition.querySelector(".name")?.textContent.trim() || "";
+            if (icon && name) {
+                newStatuses.push({ icon, name });
+            }
+        });
+
+        this.statuses = newStatuses;
+        this.renderTracker(); // Re-render the tracker to update statuses
+    }
+
     _pushActionGlyphs(actionCards, actions) {
         actionCards.forEach(card => {
             const nameElement = card.querySelector("h3");
@@ -201,19 +216,7 @@ export class ActionTracker extends Application {
         });
     }
 
-    trackActions(actorId, actions) {
-        if (!this.trackedActions[actorId]) {
-            this.trackedActions[actorId] = [];
-        }
-        this.trackedActions[actorId].push(...actions);
-        this.render(false);
-    }
-
-    resetActions(actor) {
-        this.trackedActions[actor] = [];
-        this.render(false);
-    }
-
+    // Bindings
     _onRemoveAction(event) {
         event.preventDefault();
         const button = event.target;
@@ -245,24 +248,6 @@ export class ActionTracker extends Application {
             activeCombat.nextTurn(); // Advance to the next turn
             this.render(true); // Re-render the tracker
         }
-    }
-
-    updateStatusesFromMessage(content) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(content, "text/html");
-
-        const newStatuses = [];
-        const conditions = doc.querySelectorAll(".participant-conditions ul li");
-        conditions.forEach(condition => {
-            const icon = condition.querySelector("img")?.src || "";
-            const name = condition.querySelector(".name")?.textContent.trim() || "";
-            if (icon && name) {
-                newStatuses.push({ icon, name });
-            }
-        });
-
-        this.statuses = newStatuses;
-        this.render(true); // Re-render the tracker to update statuses
     }
 
     getData() {
