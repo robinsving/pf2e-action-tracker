@@ -30,6 +30,15 @@ export class ActionTracker extends Application {
         Hooks.on("renderChatMessage", this.handleChatMessage.bind(this));
     }
 
+    unrender() {
+        // Unrender the tracker and remove hooks
+        if (this.rendered) {
+            this.close();
+        }
+        Hooks.off("updateCombat", this.handleCombatChange.bind(this));
+        Hooks.off("renderChatMessage", this.handleChatMessage.bind(this));
+    }
+
     renderTracker() {
         // Check if the Action Tracker is enabled
         if (!getSettings(settings.enabled.id)) {
@@ -57,14 +66,7 @@ export class ActionTracker extends Application {
         this.close(); // Close the tracker if not owned by the user or if no active combat
     }
 
-    _unrender() {
-        // Unrender the tracker and remove hooks
-        if (this.rendered) {
-            this.close();
-        }
-        Hooks.off("updateCombat", this.handleCombatChange.bind(this));
-        Hooks.off("renderChatMessage", this.handleChatMessage.bind(this));
-    }
+
     
     /** @override */
     activateListeners(html) {
@@ -82,7 +84,8 @@ export class ActionTracker extends Application {
         
         const currentCombatant = combat.combatants.get(combat.current.combatantId)?.actor;
         
-        this.currentActor = currentCombatant || null; // Set to null if no combatant
+        this.currentActor = currentCombatant;
+        if (!this.currentActor) return; // Exit if no current actor
 
         // Initialize tracked actions for the current actor if not already present
         this.trackedActions[this.currentActor.id] = [];

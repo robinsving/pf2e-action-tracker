@@ -54,7 +54,7 @@ Hooks.once("init", () => {
             if (value) {
                 tracker.renderTracker();
             } else {
-                tracker._unrender();
+                tracker.unrender();
             }
         }
     });
