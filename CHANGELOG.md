@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.1
+Hide tracker when not active player
+
 ## 0.2.0
 Fix: Separate Status from Ignored messages
 Fix: CSS changes
