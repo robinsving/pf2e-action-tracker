@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+Fix: Dead NPCs are considered owned by players when lootable
+Feat: Handling of Spell Variants
+Fix: Handle deduplication from updated messages (e.g. using Stances)
+
 ## 0.2.1
 Hide tracker when not active player
 
