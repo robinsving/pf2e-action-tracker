@@ -54,7 +54,7 @@ export class ActionTracker extends Application {
             this.currentRound = activeCombat?.round || 0; // Calculate the current round
             this.currentActor = currentCombatant?.actor;
 
-            const isOwnedByUser = currentCombatant?.isOwner || false; // Ensure currentCombatant is defined
+            const isOwnedByUser = currentCombatant?.actor?.isOwner || false; // Ensure currentCombatant is defined
 
             const isGM = game.user.isGM;
 
