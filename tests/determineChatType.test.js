@@ -15,6 +15,8 @@ import stand from "./data/stand.json";
 import chaliceOfJustice from "./data/chalice-of-justice.json";
 import arcanaCheck from "./data/arcana-check.json";
 import participantConditions from "./data/participant-conditions.json";
+import healX from "./data/heal-x.json";
+import heal2VsLiving from "./data/heal-2-vs-living.json";
 
 describe("determineChatType", () => {
     test("should handle full message for an unarmed strike", () => {
@@ -120,3 +122,18 @@ describe("determineChatType", () => {
         expect(result).toEqual(ChatType.STATUS_UPDATE);
     });
 });
+
+describe("determineChatType", () => {
+    test("should handle type for heal-x", () => {
+        const result = determineChatType(healX);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+
+describe("determineChatType", () => {
+    test("should handle type for heal-2-vs-living", () => {
+        const result = determineChatType(heal2VsLiving);
+        expect(result).toEqual(ChatType.ITEM_CARD);
+    });
+});
+

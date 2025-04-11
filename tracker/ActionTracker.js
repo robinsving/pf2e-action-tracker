@@ -213,12 +213,18 @@ export class ActionTracker extends Application {
                     .map(node => node.textContent.trim())
                     .join(""); // Combine the text content
 
-                const actionGlyphs = Array.from(card.querySelectorAll(".action-glyph"))
+                let actionGlyphs = Array.from(card.querySelectorAll("header .action-glyph"))
                     .filter(glyph => !glyph.closest("button[data-variant]")) // Exclude glyphs inside data-variant buttons
-                    .map(glyph => glyph.textContent.trim()); // Extract text content
+                
+                if (actionName && actionGlyphs.length === 0) {
+                    actionGlyphs = Array.from(card.querySelectorAll(".action-glyph"))
+                        .filter(glyph => !glyph.closest("button[data-variant]")) // Exclude glyphs inside data-variant buttons
+                }
 
                 if (actionName && actionGlyphs.length > 0) {
-                    actionGlyphs.forEach(actionGlyph => {
+                    actionGlyphs
+                        .map(glyph => glyph.textContent.trim())
+                        .forEach(actionGlyph => {
                         actions.push({ name: actionName, cost: actionGlyph });
                     });
                 }
