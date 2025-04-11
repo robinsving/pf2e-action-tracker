@@ -123,7 +123,14 @@ export class ActionTracker extends Application {
             if (!this.trackedActions[actorId]) {
                 this.trackedActions[actorId] = [];
             }
+
+            // Remove previous messages with the same id
+            this.trackedActions[actorId] = this.trackedActions[actorId].filter(action => action.messageId !== message.id);
+
+            // Add the new actions with the message id
+            actions.forEach(action => action.messageId = message.id);
             this.trackedActions[actorId].push(...actions);
+
             this.render(false);
         }
     }
