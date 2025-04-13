@@ -278,7 +278,7 @@ export class ActionTracker extends Application {
     // Bindings
     _onRemoveAction(event) {
         event.preventDefault();
-        const button = event.target;
+        const button = event.currentTarget;
         const index = parseInt(button.dataset.index, 10); // Get the index from the button
         const actorId = this.currentActor?.id;
 
