@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+Feat: Adding movement tracking (default: false)
+Feat: Adding movement buttons (default: true)
+Fix: Removing actions was accidentally removed
+
 ## 0.3.0
 Fix: Dead NPCs are considered owned by players when lootable
 Feat: Handling of Spell Variants
