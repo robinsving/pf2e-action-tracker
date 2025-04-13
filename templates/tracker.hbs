@@ -35,6 +35,7 @@
         {{/each}}
     </ul>
     <div id="movement-controls">
+        {{#if showDropdownButtons}}
         <div class="custom-dropdown">
             <button class="dropdown-toggle" id="dropdown-toggle-btn">Add Movement</button>
             <ul class="dropdown-menu" id="dropdown-menu">
@@ -46,5 +47,6 @@
                 {{/each}}
             </ul>
         </div>
+        {{/if}}
     </div>
 </div>

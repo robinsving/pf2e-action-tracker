@@ -113,6 +113,15 @@ Hooks.once("init", () => {
         default: true,
     });
 
+    game.settings.register(SCRIPT_ID, settings.showDropdownButtons.id, {
+        name: settings.showDropdownButtons.name,
+        hint: settings.showDropdownButtons.hint,
+        scope: "client", 
+        config: true, 
+        type: Boolean, 
+        default: true 
+    });
+
     debug("Settings registered during init hook");
     isInitialized = true;
 });

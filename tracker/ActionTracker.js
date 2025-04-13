@@ -382,7 +382,8 @@ export class ActionTracker extends Application {
             }
         });
 
-        const showStatusIcons = game.settings.get(SCRIPT_ID, settings.showStatusIcons.id); // Get the setting value
+        const showStatusIcons = getSettings(settings.showStatusIcons.id); // Get the setting value
+        const showDropdownButtons = getSettings(settings.showDropdownButtons.id); // Get the setting value
 
         if (this.movementActions.length === 0) {
             this._setMovementActions(); // Update movement actions if available
@@ -398,6 +399,7 @@ export class ActionTracker extends Application {
             hasUncertainCosts, // Include flag for uncertain costs
             isGM: game.user.isGM, // Include flag for GM status
             movementActions: this.movementActions, // Use pre-calculated movement actions
+            showDropdownButtons, // Include the setting in the template data
         };
     }
 }

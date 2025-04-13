@@ -8,6 +8,7 @@ export const settings = {
     autoRenderOnCombatStart: { id: "autoRenderOnCombatStart", name: "Auto Render on Combat Start", hint: "Automatically render the Action Tracker when a new combat starts." },
     showStatusIcons: { id: "showStatusIcons", name: "Show Status Icons", hint: "Enable or disable the display of status icons in the tracker." },
     trackMovement: { id: "trackMovementActions", name: "Track Movement (experimental)", hint: "Enable or disable tracking of movement by looking at token movement." },
+    showDropdownButtons: { id: "showDropdownButtons", name: "Show Dropdown Buttons", hint: "Enable or disable the display of dropdown buttons."},
 }
 
 export function popup(message) {
