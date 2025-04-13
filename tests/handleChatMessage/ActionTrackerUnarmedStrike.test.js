@@ -10,6 +10,7 @@ describe("ActionTracker - unarmed-strike", () => {
             id: "KiGiuRE16eptMz63",
             name: "Test Actor",
             isOwner: true,
+            items: [],
         };
 
         // Initialize ActionTracker

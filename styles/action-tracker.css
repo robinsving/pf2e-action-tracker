@@ -7,14 +7,8 @@
     width: 280px;
     font-family: var(--font-primary); /* PF2e font */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Header styling */
-.tracker-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #782e22; /* PF2e primary color */
-    text-align: center;
+    overflow: visible; /* Allow child elements to overflow */
+    position: relative; /* Ensure proper positioning context for dropdown */
 }
 
 /* Character name styling */
@@ -52,32 +46,6 @@
     color: #333;
 }
 
-/* Button styling */
-#action-controls button,
-#close-tracker {
-    background-color: #782e22; /* PF2e primary color */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 0.9em;
-    cursor: pointer;
-    margin-right: 5px;
-    transition: background-color 0.3s ease;
-}
-
-#action-controls button:hover,
-#close-tracker:hover {
-    background-color: #632419; /* PF2e hover color */
-}
-
-#close-tracker {
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
 /* Style for the action list items */
 .action-item {
     display: flex;
@@ -105,7 +73,6 @@
     gap: 0.2rem; /* Add spacing between multiple glyphs */
 }
 
-
 /* Style for the remove button */
 .remove-action-btn {
     width: auto;
@@ -124,25 +91,6 @@
 
 .remove-action-btn:hover {
     color: #555; /* Darker gray on hover */
-}
-
-/* Optional: Add spacing between the icon and the edge */
-.remove-action-btn i {
-    pointer-events: none; /* Prevent hover effects on the icon itself */
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-    .tracker-container {
-        width: 90%;
-        padding: 10px;
-    }
-
-    #action-controls button,
-    #close-tracker {
-        width: 100%;
-        margin-bottom: 5px;
-    }
 }
 
 /* Round tracker styling */
@@ -212,4 +160,57 @@
     height: 20px;
     border-radius: 50%;
     border: 1px solid white;
+}
+
+/* Custom dropdown styling */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-toggle {
+    width: 100%;
+    background-color: #782e22; /* PF2e primary color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-menu {
+    display: none;
+    position: fixed; /* Use fixed positioning to escape container boundaries */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: auto; /* Adjust width dynamically */
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000; /* Ensure it appears above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    list-style: none;
+}
+
+.dropdown-item {
+    padding: 6px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(120, 46, 34, 0.1); /* Match action icon background */
+    border: 1px solid #ddd; /* Match action icon border */
+    border-radius: 4px; /* Match action icon border radius */
+    margin-bottom: 1px; /* Add spacing between items */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(120, 46, 34, 0.2); /* Slightly darker hover color */
+}
+
+.dropdown-menu.show {
+    display: block;
 }

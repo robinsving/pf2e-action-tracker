@@ -1,5 +1,5 @@
 <div class="tracker-container">
-     {{#if isGM}}
+    {{#if isGM}}
     <div class="round-tracker">
         <button class="prev-turn-btn" title="Previous Turn">
             <i class="fas fa-arrow-left"></i>
@@ -34,4 +34,17 @@
             </li>
         {{/each}}
     </ul>
+    <div id="movement-controls">
+        <div class="custom-dropdown">
+            <button class="dropdown-toggle" id="dropdown-toggle-btn">Add Movement</button>
+            <ul class="dropdown-menu" id="dropdown-menu">
+                {{#each movementActions}}
+                <li class="dropdown-item" data-id="{{this.id}}" data-action-id="{{this.id}}">
+                    <span class="action-glyph">{{this.system.actions.value}}</span>
+                    {{this.name}}
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 </div>

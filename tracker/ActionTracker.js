@@ -8,6 +8,7 @@ export class ActionTracker extends Application {
         this.currentActor = null; // Track the current actor
         this.statuses = []; // Track statuses
         this.currentRound = 0; // Track the current round
+        this.movementActions = []; // Store movement actions
         this.initHooks();
     }
 
@@ -76,6 +77,38 @@ export class ActionTracker extends Application {
         html.find(".remove-action-btn").on("click", this._onRemoveAction.bind(this));
         html.find(".prev-turn-btn").on("click", this._onPreviousTurn.bind(this)); // Listener for "Previous Turn" button
         html.find(".next-turn-btn").on("click", this._onNextTurn.bind(this)); // Listener for "Next Turn" button
+
+        // Dropdown toggle
+        html.find("#dropdown-toggle-btn").on("click", this._onToggleDropdown.bind(this));
+
+        // Dropdown item selection
+        html.find(".dropdown-item").on("click", this._onDropdownItemClick.bind(this));
+    }
+
+    // Toggle dropdown visibility
+    _onToggleDropdown(event) {
+        event.preventDefault();
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        dropdownMenu.classList.toggle("show");
+    }
+
+    // Handle dropdown item selection
+    _onDropdownItemClick(event) {
+        event.preventDefault();
+        const actionId = event.currentTarget.dataset.actionId;
+
+        const action = this.currentActor?.items.get(actionId);
+        if (action) {
+            debug(`Movement action selected: ${action.name}`);
+            this.trackedActions[this.currentActor.id] = this.trackedActions[this.currentActor.id] || [];
+            const actionCost = action.system?.actions?.value || "?"; // Safely access actionCost
+            this.trackedActions[this.currentActor.id].push({ name: action.name, cost: actionCost });
+            this.render(true);
+        }
+
+        // Close the dropdown after selection
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        dropdownMenu.classList.remove("show");
     }
 
     updateToken(token, updateData) {
@@ -132,6 +165,9 @@ export class ActionTracker extends Application {
 
         // Initialize tracked actions for the current actor if not already present
         this.trackedActions[this.currentActor.id] = [];
+
+        // Calculate movement actions for the current actor
+        this._setMovementActions()
 
         this.renderTracker(); // Render the tracker
     }
@@ -247,6 +283,10 @@ export class ActionTracker extends Application {
         this.renderTracker(); // Re-render the tracker to update statuses
     }
 
+    _setMovementActions() {
+        this.movementActions = this.currentActor?.items.filter(item => item.type === "action" && item.system.traits?.value?.includes("move")) || [];
+    }
+
     _pushActionGlyphs(actionCards, actions) {
         actionCards.forEach(card => {
             const nameElement = card.querySelector("h3");
@@ -309,6 +349,22 @@ export class ActionTracker extends Application {
         }
     }
 
+    _onMovementActionClick(event) {
+        event.preventDefault();
+        const button = event.currentTarget;
+        const actionId = button.dataset.actionId;
+
+        const action = this.currentActor?.items.get(actionId);
+        if (action) {
+            // Perform the action logic (e.g., log it, track it, or execute it)
+            debug(`Movement action clicked: ${action.name}`);
+            // Example: Add the action to tracked actions
+            this.trackedActions[this.currentActor.id] = this.trackedActions[this.currentActor.id] || [];
+            this.trackedActions[this.currentActor.id].push({ name: action.name, cost: action.system.actions.value });
+            this.render(true);
+        }
+    }
+
     getData() {
         // Prepare data for the Handlebars template
         const actorId = this.currentActor?.id;
@@ -328,6 +384,10 @@ export class ActionTracker extends Application {
 
         const showStatusIcons = game.settings.get(SCRIPT_ID, settings.showStatusIcons.id); // Get the setting value
 
+        if (this.movementActions.length === 0) {
+            this._setMovementActions(); // Update movement actions if available
+        }
+
         return {
             characterName: this.currentActor?.name || "Unknown",
             totalActions,
@@ -337,6 +397,7 @@ export class ActionTracker extends Application {
             showTurnButtons: game.user.isGM, // Show turn buttons only for GMs
             hasUncertainCosts, // Include flag for uncertain costs
             isGM: game.user.isGM, // Include flag for GM status
+            movementActions: this.movementActions, // Use pre-calculated movement actions
         };
     }
 }
