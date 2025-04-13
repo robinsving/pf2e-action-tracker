@@ -5,8 +5,7 @@
 
 ## Improvements
 - Add support for languages by integrating Foundry's localization system, allowing users to experience the tracker in their preferred language.
-- Handle updateChatMessage (by overriding existing message id)
-- Handle Variant messages (spells like Heal)
+- Handle common movement types
 
 ## Optimizations
 - Optimize the rendering process to avoid unnecessary re-renders and improve performance by caching parsed actions.

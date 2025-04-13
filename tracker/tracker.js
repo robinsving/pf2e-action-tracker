@@ -59,6 +59,15 @@ Hooks.once("init", () => {
         }
     });
 
+    game.settings.register(SCRIPT_ID, settings.trackMovement.id, {
+        name: settings.trackMovement.name,
+        hint: settings.trackMovement.hint,
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+    });
+
     game.settings.register(SCRIPT_ID, settings.autoRenderOnSceneChange.id, {
         name: settings.autoRenderOnSceneChange.name,
         hint: settings.autoRenderOnSceneChange.hint,

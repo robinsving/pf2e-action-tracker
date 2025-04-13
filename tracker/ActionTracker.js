@@ -28,6 +28,7 @@ export class ActionTracker extends Application {
     initHooks() {
         Hooks.on("updateCombat", this.handleCombatChange.bind(this));
         Hooks.on("renderChatMessage", this.handleChatMessage.bind(this));
+        Hooks.on("updateToken", this.updateToken.bind(this)); // Re-render on token updates, to record movement
     }
 
     unrender() {
@@ -37,6 +38,7 @@ export class ActionTracker extends Application {
         }
         Hooks.off("updateCombat", this.handleCombatChange.bind(this));
         Hooks.off("renderChatMessage", this.handleChatMessage.bind(this));
+        Hooks.off("updateToken", this.updateToken.bind(this));
     }
 
     renderTracker() {
@@ -65,8 +67,6 @@ export class ActionTracker extends Application {
         }
         this.close(); // Close the tracker if not owned by the user or if no active combat
     }
-
-
     
     /** @override */
     activateListeners(html) {
@@ -76,6 +76,49 @@ export class ActionTracker extends Application {
         html.find(".remove-action-btn").on("click", this._onRemoveAction.bind(this));
         html.find(".prev-turn-btn").on("click", this._onPreviousTurn.bind(this)); // Listener for "Previous Turn" button
         html.find(".next-turn-btn").on("click", this._onNextTurn.bind(this)); // Listener for "Next Turn" button
+    }
+
+    updateToken(token, updateData) {
+        // Check if the token belongs to the current actor
+        if ((this.currentActor?.id !== token.actor?.id) || !getSettings(settings.trackMovement.id)) return;
+
+        // Check if the token's position has changed
+        if (updateData.x !== undefined || updateData.y !== undefined) {
+            const previousX = token.x;
+            const previousY = token.y;
+            const newX = updateData.x ?? previousX;
+            const newY = updateData.y ?? previousY;
+
+            // Calculate the distance moved (in grid units)
+            const distanceMoved = Math.sqrt(Math.pow(newX - previousX, 2) + Math.pow(newY - previousY, 2));
+
+            // Convert distance to feet (assuming Foundry's grid size is in pixels)
+            const gridSize = canvas.grid.size; // Grid size in pixels
+            const distanceInFeet = (distanceMoved / gridSize) * canvas.scene.grid.distance;
+
+            // Get the token's speed from its actor data
+            const speed = token.actor?.system.attributes.speed?.value || 0; // Adjust path for your system
+
+            debug(`Token ${token.name} moved ${distanceInFeet.toFixed(2)} feet (Speed: ${speed} feet)`);
+
+            if (!this.trackedActions[this.currentActor.id]) {
+                this.trackedActions[this.currentActor.id] = []; // Initialize if not present
+            }
+
+            // Determine the type of movement and calculate the cost
+            if (distanceInFeet < 10) {
+                this.trackedActions[this.currentActor.id].push({ name: "Step", cost: "1", messageId: updateData._id });
+                debug(`Token ${token.name} performed a Step.`);
+            } else if (distanceInFeet < speed * 3) {
+                const actionCost = Math.ceil(distanceInFeet / speed); // Calculate actions based on distance vs speed
+                this.trackedActions[this.currentActor.id].push({ name: "Stride", cost: actionCost, messageId: updateData._id });
+                debug(`Token ${token.name} performed a Stride costing ${actionCost} actions.`);
+            } else {
+                this.trackedActions[this.currentActor.id].push({ name: "Stride", cost: "3+", messageId: updateData._id });
+                info(`Token ${token.name} performed a Stride which was too long to be a valid movement.`);
+            }
+            this.renderTracker();
+        }
     }
 
     handleCombatChange(combat) {
