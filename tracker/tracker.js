@@ -71,7 +71,7 @@ Hooks.once("init", () => {
     game.settings.register(SCRIPT_ID, settings.autoRenderOnSceneChange.id, {
         name: settings.autoRenderOnSceneChange.name,
         hint: settings.autoRenderOnSceneChange.hint,
-        scope: "world",
+        scope: "client",
         config: true,
         type: Boolean,
         default: true,
@@ -80,7 +80,7 @@ Hooks.once("init", () => {
     game.settings.register(SCRIPT_ID, settings.autoRenderOnCombatStart.id, {
         name: settings.autoRenderOnCombatStart.name,
         hint: settings.autoRenderOnCombatStart.hint,
-        scope: "world",
+        scope: "client",
         config: true,
         type: Boolean,
         default: true,
@@ -98,7 +98,7 @@ Hooks.once("init", () => {
     game.settings.register(SCRIPT_ID, settings.debug.id, {
         name: settings.debug.name,
         hint: settings.debug.hint,
-        scope: "world",
+        scope: "client",
         config: true,
         type: Boolean,
         default: false,
@@ -107,7 +107,7 @@ Hooks.once("init", () => {
     game.settings.register(SCRIPT_ID, settings.showStatusIcons.id, {
         name: settings.showStatusIcons.name,
         hint: settings.showStatusIcons.hint,
-        scope: "world",
+        scope: "client",
         config: true,
         type: Boolean,
         default: true,
