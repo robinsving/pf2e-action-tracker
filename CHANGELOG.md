@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.1
+Fix: Moving some UI-settings from GM to Players
+
 ## 0.4.0
 Feat: Adding movement tracking (default: false)
 Feat: Adding movement buttons (default: true)
