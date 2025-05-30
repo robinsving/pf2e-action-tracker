@@ -6,8 +6,8 @@ export const settings = {
     debug: { id: "debugMode", name: "Enable Debugging", hint: "Print debug to console log" },
     autoRenderOnSceneChange: { id: "autoRenderOnSceneChange", name: "Auto Render on Scene Change", hint: "Automatically render the Action Tracker when the scene changes." },
     autoRenderOnCombatStart: { id: "autoRenderOnCombatStart", name: "Auto Render on Combat Start", hint: "Automatically render the Action Tracker when a new combat starts." },
-    showStatusIcons: { id: "showStatusIcons", name: "Show Status Icons", hint: "Enable or disable the display of status icons in the tracker." },
-    showDropdownButtons: { id: "showDropdownButtons", name: "Show Dropdown Buttons", hint: "Enable or disable the display of dropdown buttons."},
+    showStatusIcons: { id: "showStatusIcons", name: "Show Status Icons", hint: "Enable the display of status icons in the tracker." },
+    showMovementButtons: { id: "showMovementButtons", name: "Add Movement-buttons", hint: "Enable adding movements from the character sheet."},
 }
 
 export function popup(message) {

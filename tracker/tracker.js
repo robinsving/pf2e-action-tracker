@@ -104,9 +104,9 @@ Hooks.once("init", () => {
         default: true,
     });
 
-    game.settings.register(SCRIPT_ID, settings.showDropdownButtons.id, {
-        name: settings.showDropdownButtons.name,
-        hint: settings.showDropdownButtons.hint,
+    game.settings.register(SCRIPT_ID, settings.showMovementButtons.id, {
+        name: settings.showMovementButtons.name,
+        hint: settings.showMovementButtons.hint,
         scope: "client", 
         config: true, 
         type: Boolean, 

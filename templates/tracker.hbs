@@ -35,9 +35,16 @@
         {{/each}}
     </ul>
     <div id="movement-controls">
-        {{#if showDropdownButtons}}
+        {{#if showMovementButtons}}
         <div class="custom-dropdown">
-            <button class="dropdown-toggle" id="dropdown-toggle-btn">Add Movement</button>
+            <button
+                class="dropdown-toggle"
+                id="dropdown-toggle-btn"
+                title="Lists actions with Move trait on character sheet"
+                {{#unless movementActions.length}}disabled style="background-color:lightslategrey;opacity:0.5;cursor:not-allowed;"{{/unless}}
+            >
+                Add Movement
+            </button>
             <ul class="dropdown-menu" id="dropdown-menu">
                 {{#each movementActions}}
                 <li class="dropdown-item" data-id="{{this.id}}" data-action-id="{{this.id}}">

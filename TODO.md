@@ -2,6 +2,7 @@
 
 ## Fault tolerance
 - Handle unexpected DOM structures in chat messages and ensure meaningful error messages are logged when parsing fails.
+- Adding movement should print to Chat instead of adding directly (private for GM?)
 
 ## Improvements
 - Add support for languages by integrating Foundry's localization system, allowing users to experience the tracker in their preferred language.
