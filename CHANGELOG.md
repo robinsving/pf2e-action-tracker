@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+Feat: Make Movement button handle no actions (resets settings)
+Cleanup: remove movement tracking
+
 ## 0.4.1
 Fix: Moving some UI-settings from GM to Players
 
