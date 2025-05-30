@@ -14,9 +14,6 @@
     "styles": [
         "styles/action-tracker.css"
     ],
-    "templates": [
-        "templates/tracker.hbs"
-    ],
     "relationships": {
         "systems": [
             {
